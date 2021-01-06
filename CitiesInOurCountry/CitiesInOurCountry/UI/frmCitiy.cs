@@ -19,6 +19,8 @@ namespace CitiesInOurCountry.UI
             InitializeComponent();
         }
 
+        int cityId = 0;
+
         private void CreateGrid()
         {
             DataGridViewCellStyle coloumHeader = new DataGridViewCellStyle();
@@ -39,7 +41,7 @@ namespace CitiesInOurCountry.UI
             dgv.Columns[1].Width = 100;
             dgv.Columns[1].ReadOnly = true;
 
-            dgv.Columns[2].HeaderText = "State Id";
+            dgv.Columns[2].HeaderText = "State";
             dgv.Columns[2].Width = 100;
             dgv.Columns[2].ReadOnly = true;
         }
@@ -71,11 +73,14 @@ namespace CitiesInOurCountry.UI
         private void btnDelete_Click(object sender, EventArgs e)
         {
             FillCityId();
+            lblResult.Text = CityService.RemoveCity(cityId);
+
+            CityService.ReadData(dgv);
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            cityId = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
         }
 
         private void FillCityId()

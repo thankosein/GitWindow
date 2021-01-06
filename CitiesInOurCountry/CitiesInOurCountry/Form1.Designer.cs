@@ -30,6 +30,7 @@
         {
             this.btnAddState = new System.Windows.Forms.Button();
             this.btnAddCity = new System.Windows.Forms.Button();
+            this.tvDynamic = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // btnAddState
@@ -52,11 +53,19 @@
             this.btnAddCity.UseVisualStyleBackColor = true;
             this.btnAddCity.Click += new System.EventHandler(this.btnAddCity_Click);
             // 
+            // tvDynamic
+            // 
+            this.tvDynamic.Location = new System.Drawing.Point(70, 106);
+            this.tvDynamic.Name = "tvDynamic";
+            this.tvDynamic.Size = new System.Drawing.Size(274, 472);
+            this.tvDynamic.TabIndex = 3;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 504);
+            this.ClientSize = new System.Drawing.Size(800, 610);
+            this.Controls.Add(this.tvDynamic);
             this.Controls.Add(this.btnAddCity);
             this.Controls.Add(this.btnAddState);
             this.Name = "Form1";
@@ -71,6 +80,7 @@
 
         private System.Windows.Forms.Button btnAddState;
         private System.Windows.Forms.Button btnAddCity;
+        private System.Windows.Forms.TreeView tvDynamic;
     }
 }
 

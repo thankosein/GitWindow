@@ -35,6 +35,20 @@ namespace CitiesInOurCountry.Service
             return "Added Sussessfully!";
         }
 
+        public static string RemoveCity(int cityId)
+        {
+            foreach (var item in lstCity)
+            {
+                if(item.CityId == cityId)
+                {
+                    lstCity.Remove(item);
+
+                    return "Deleted Successfully!";
+                }
+            }
+
+            return "No record deleted.";
+        }
         public static void ReadData(DataGridView dgv)
         {
             dgv.Rows.Clear();
