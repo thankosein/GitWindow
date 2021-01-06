@@ -44,7 +44,7 @@
             // 
             // btnAddCity
             // 
-            this.btnAddCity.Location = new System.Drawing.Point(291, 42);
+            this.btnAddCity.Location = new System.Drawing.Point(230, 42);
             this.btnAddCity.Name = "btnAddCity";
             this.btnAddCity.Size = new System.Drawing.Size(114, 49);
             this.btnAddCity.TabIndex = 1;
@@ -62,6 +62,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }

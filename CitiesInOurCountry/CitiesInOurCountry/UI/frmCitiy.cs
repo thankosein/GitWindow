@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CitiesInOurCountry.Model;
+using CitiesInOurCountry.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,6 +47,40 @@ namespace CitiesInOurCountry.UI
         private void frmCitiy_Load(object sender, EventArgs e)
         {
             CreateGrid();
+            FillCityId();
+            CityService.FillStateComboBox(cboStateId, StateService.lstState);
+
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FillCityId();
+
+            City objCity = new City
+            {
+                CityId = Convert.ToInt32(txtCityId.Text),
+                Name = txtName.Text,
+                StateId = (byte)cboStateId.SelectedValue
+                //StateId = Convert.ToByte(cboStateId.SelectedValue)
+            };
+            lblResult.Text = CityService.AddCity(objCity);
+
+            CityService.ReadData(dgv);
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            FillCityId();
+        }
+
+        private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void FillCityId()
+        {
+            txtCityId.Text = CityService.GetCityId().ToString();
         }
     }
 }
