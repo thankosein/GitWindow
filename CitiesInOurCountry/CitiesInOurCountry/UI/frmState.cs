@@ -48,16 +48,96 @@ namespace CitiesInOurCountry.UI
             StateService.ReadData(dgv);
         }
 
+        
+        
+        private void Compare()
+        {
+            //1 Get Name from txtName
+            string one = txtName.Text;
+
+            //2 Get Value from datagrid
+            //3 Compare
+            for (int i = 0; i < dgv.Rows.Count; i++)
+            {
+                //2 get value from datagrid
+                string two = dgv.Rows[i].Cells[1].Value.ToString();
+
+                //3 compare
+                if(one == two)
+                {
+                    //4 if exit
+                    MessageBox.Show("Name Exit.");
+                }                
+
+            }
+
+            
+        }
+
+        private bool IsExitInList()
+        {
+            bool tfExit = false;
+            //1 get value from txtName
+            string one = txtName.Text;
+
+            foreach (var item in StateService.lstState)
+            {
+                //2 Get value from listObject(lstState)
+                string two = item.Name;
+
+                //3 Compare
+                if (one == two)
+                {
+                    tfExit = true;
+                    MessageBox.Show("Exit");
+                    lblResult.Text = "Name exit.";
+                    break;
+                }                
+            }
+
+            return tfExit;
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            byte id = Convert.ToByte(txtStateId.Text);
-            string name = txtName.Text;
+            bool isNameBlank = CheckBlank();
+            if (!isNameBlank)
+            {
+                bool isExit = IsExitInList();
+                if (!isExit)
+                {
+                    byte id = Convert.ToByte(txtStateId.Text);
+                    string name = txtName.Text;
 
-            lblResult.Text = StateService.AddState(id, name);
-            StateService.ReadData(dgv);
+                    lblResult.Text = StateService.AddState(id, name);
+                    StateService.ReadData(dgv);
 
-            AutoFillStateId();
+                    AutoFillStateId();
+                }
+            }
         }
+
+        private bool CheckBlank()
+        {
+            //1 get value from txtName
+            string one = txtName.Text;
+
+            //2
+            int abc = txtName.Text.Length;
+            int def = txtName.Text.Replace(" ","").Length;
+
+            if(txtName.Text.Trim().Length == 0)
+            {
+                lblResult.Text = "Name should not be empty.";
+                MessageBox.Show("Name is empty.");
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
 
         private void btnDelete_Click(object sender, EventArgs e)
         {

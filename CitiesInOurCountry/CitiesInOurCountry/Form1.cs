@@ -17,7 +17,7 @@ namespace CitiesInOurCountry
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void btnAddState_Click(object sender, EventArgs e)
@@ -34,12 +34,10 @@ namespace CitiesInOurCountry
             frm.ShowDialog();
 
             GenerateDynamicStateTreeView(StateService.lstState, CityService.lstCity);
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
-            
+        {            
 
         }
 
