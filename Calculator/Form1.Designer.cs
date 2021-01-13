@@ -54,11 +54,13 @@
             // 
             // txtResult
             // 
-            this.txtResult.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResult.Location = new System.Drawing.Point(13, 58);
+            this.txtResult.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtResult.Enabled = false;
+            this.txtResult.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResult.Location = new System.Drawing.Point(13, 47);
             this.txtResult.Margin = new System.Windows.Forms.Padding(4);
             this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(390, 36);
+            this.txtResult.Size = new System.Drawing.Size(390, 62);
             this.txtResult.TabIndex = 1;
             this.txtResult.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
@@ -79,7 +81,6 @@
             this.btn0.TabIndex = 3;
             this.btn0.Text = "0";
             this.btn0.UseVisualStyleBackColor = true;
-            this.btn0.Click += new System.EventHandler(this.btn_Click);
             // 
             // btnDecimal
             // 
@@ -169,7 +170,7 @@
             this.btnMultiply.Name = "btnMultiply";
             this.btnMultiply.Size = new System.Drawing.Size(93, 63);
             this.btnMultiply.TabIndex = 16;
-            this.btnMultiply.Text = "x";
+            this.btnMultiply.Text = "×";
             this.btnMultiply.UseVisualStyleBackColor = true;
             // 
             // btn7
@@ -238,10 +239,9 @@
             // 
             // lblLog
             // 
-            this.lblLog.AutoSize = true;
-            this.lblLog.Location = new System.Drawing.Point(12, 22);
+            this.lblLog.Location = new System.Drawing.Point(13, 15);
             this.lblLog.Name = "lblLog";
-            this.lblLog.Size = new System.Drawing.Size(20, 21);
+            this.lblLog.Size = new System.Drawing.Size(390, 25);
             this.lblLog.TabIndex = 0;
             this.lblLog.Text = "=";
             this.lblLog.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -255,7 +255,6 @@
             this.btnEqual.TabIndex = 21;
             this.btnEqual.Text = "=";
             this.btnEqual.UseVisualStyleBackColor = true;
-            this.btnEqual.Click += new System.EventHandler(this.btnEqual_Click);
             // 
             // Form1
             // 
@@ -286,6 +285,9 @@
             this.Controls.Add(this.txtResult);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(428, 522);
+            this.MinimumSize = new System.Drawing.Size(428, 522);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculator";
