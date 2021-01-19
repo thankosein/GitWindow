@@ -1,5 +1,6 @@
 ﻿using MultipleChoiceQuestionGenerator.Data;
 using MultipleChoiceQuestionGenerator.Service;
+using MultipleChoiceQuestionGenerator.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -82,6 +83,18 @@ namespace MultipleChoiceQuestionGenerator
 
             QuestionService.ReadData(dgv);
             txtQuesId.Text  = QuestionService.GetQuestionId();
+        }
+
+        private void btnSubject_Click(object sender, EventArgs e)
+        {
+            frmSubject frm = new frmSubject();
+            frm.ShowDialog();
+        }
+
+        private void btnGrade_Click(object sender, EventArgs e)
+        {
+            frmGrade frm = new frmGrade();
+            frm.ShowDialog();
         }
     }
 }

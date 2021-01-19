@@ -29,30 +29,34 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtQuesId = new System.Windows.Forms.TextBox();
-            this.txtQuest = new System.Windows.Forms.TextBox();
-            this.txtAnsA = new System.Windows.Forms.TextBox();
-            this.txtAnsB = new System.Windows.Forms.TextBox();
-            this.txtAnsC = new System.Windows.Forms.TextBox();
-            this.cboSubject = new System.Windows.Forms.ComboBox();
-            this.rdoA = new System.Windows.Forms.RadioButton();
-            this.rdoB = new System.Windows.Forms.RadioButton();
-            this.rdoC = new System.Windows.Forms.RadioButton();
-            this.btnSave = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.rdoC = new System.Windows.Forms.RadioButton();
+            this.rdoB = new System.Windows.Forms.RadioButton();
+            this.rdoA = new System.Windows.Forms.RadioButton();
+            this.cboSubject = new System.Windows.Forms.ComboBox();
+            this.txtAnsC = new System.Windows.Forms.TextBox();
+            this.txtAnsB = new System.Windows.Forms.TextBox();
+            this.txtAnsA = new System.Windows.Forms.TextBox();
+            this.txtQuest = new System.Windows.Forms.TextBox();
+            this.txtQuesId = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
+            this.btnSubject = new System.Windows.Forms.Button();
+            this.btnGrade = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnGrade);
+            this.groupBox1.Controls.Add(this.btnSubject);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.rdoC);
@@ -79,95 +83,56 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // btnDelete
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 27);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "QuestionID:";
+            this.btnDelete.Location = new System.Drawing.Point(297, 266);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(112, 42);
+            this.btnDelete.TabIndex = 10;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // btnSave
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(51, 62);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 27);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Question:";
+            this.btnSave.Location = new System.Drawing.Point(143, 267);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(112, 42);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label3
+            // rdoC
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(105, 104);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(25, 27);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "A:";
+            this.rdoC.AutoSize = true;
+            this.rdoC.Location = new System.Drawing.Point(282, 230);
+            this.rdoC.Name = "rdoC";
+            this.rdoC.Size = new System.Drawing.Size(43, 31);
+            this.rdoC.TabIndex = 8;
+            this.rdoC.Text = "C";
+            this.rdoC.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // rdoB
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(105, 146);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(26, 27);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "B:";
+            this.rdoB.AutoSize = true;
+            this.rdoB.Location = new System.Drawing.Point(212, 230);
+            this.rdoB.Name = "rdoB";
+            this.rdoB.Size = new System.Drawing.Size(43, 31);
+            this.rdoB.TabIndex = 7;
+            this.rdoB.Text = "B";
+            this.rdoB.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // rdoA
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(105, 188);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(26, 27);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "C:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(465, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 27);
-            this.label7.TabIndex = 1;
-            this.label7.Text = "Subject:";
-            // 
-            // txtQuesId
-            // 
-            this.txtQuesId.Enabled = false;
-            this.txtQuesId.Location = new System.Drawing.Point(143, 16);
-            this.txtQuesId.Name = "txtQuesId";
-            this.txtQuesId.Size = new System.Drawing.Size(295, 34);
-            this.txtQuesId.TabIndex = 0;
-            // 
-            // txtQuest
-            // 
-            this.txtQuest.Location = new System.Drawing.Point(143, 59);
-            this.txtQuest.Name = "txtQuest";
-            this.txtQuest.Size = new System.Drawing.Size(1237, 34);
-            this.txtQuest.TabIndex = 2;
-            // 
-            // txtAnsA
-            // 
-            this.txtAnsA.Location = new System.Drawing.Point(143, 101);
-            this.txtAnsA.Name = "txtAnsA";
-            this.txtAnsA.Size = new System.Drawing.Size(1237, 34);
-            this.txtAnsA.TabIndex = 3;
-            // 
-            // txtAnsB
-            // 
-            this.txtAnsB.Location = new System.Drawing.Point(143, 143);
-            this.txtAnsB.Name = "txtAnsB";
-            this.txtAnsB.Size = new System.Drawing.Size(1237, 34);
-            this.txtAnsB.TabIndex = 4;
-            // 
-            // txtAnsC
-            // 
-            this.txtAnsC.Location = new System.Drawing.Point(143, 185);
-            this.txtAnsC.Name = "txtAnsC";
-            this.txtAnsC.Size = new System.Drawing.Size(1237, 34);
-            this.txtAnsC.TabIndex = 5;
+            this.rdoA.AutoSize = true;
+            this.rdoA.Checked = true;
+            this.rdoA.Location = new System.Drawing.Point(143, 230);
+            this.rdoA.Name = "rdoA";
+            this.rdoA.Size = new System.Drawing.Size(42, 31);
+            this.rdoA.TabIndex = 6;
+            this.rdoA.TabStop = true;
+            this.rdoA.Text = "A";
+            this.rdoA.UseVisualStyleBackColor = true;
             // 
             // cboSubject
             // 
@@ -182,56 +147,95 @@
             this.cboSubject.Size = new System.Drawing.Size(295, 35);
             this.cboSubject.TabIndex = 1;
             // 
-            // rdoA
+            // txtAnsC
             // 
-            this.rdoA.AutoSize = true;
-            this.rdoA.Checked = true;
-            this.rdoA.Location = new System.Drawing.Point(143, 230);
-            this.rdoA.Name = "rdoA";
-            this.rdoA.Size = new System.Drawing.Size(42, 31);
-            this.rdoA.TabIndex = 6;
-            this.rdoA.TabStop = true;
-            this.rdoA.Text = "A";
-            this.rdoA.UseVisualStyleBackColor = true;
+            this.txtAnsC.Location = new System.Drawing.Point(143, 185);
+            this.txtAnsC.Name = "txtAnsC";
+            this.txtAnsC.Size = new System.Drawing.Size(1237, 34);
+            this.txtAnsC.TabIndex = 5;
             // 
-            // rdoB
+            // txtAnsB
             // 
-            this.rdoB.AutoSize = true;
-            this.rdoB.Location = new System.Drawing.Point(212, 230);
-            this.rdoB.Name = "rdoB";
-            this.rdoB.Size = new System.Drawing.Size(43, 31);
-            this.rdoB.TabIndex = 7;
-            this.rdoB.Text = "B";
-            this.rdoB.UseVisualStyleBackColor = true;
+            this.txtAnsB.Location = new System.Drawing.Point(143, 143);
+            this.txtAnsB.Name = "txtAnsB";
+            this.txtAnsB.Size = new System.Drawing.Size(1237, 34);
+            this.txtAnsB.TabIndex = 4;
             // 
-            // rdoC
+            // txtAnsA
             // 
-            this.rdoC.AutoSize = true;
-            this.rdoC.Location = new System.Drawing.Point(282, 230);
-            this.rdoC.Name = "rdoC";
-            this.rdoC.Size = new System.Drawing.Size(43, 31);
-            this.rdoC.TabIndex = 8;
-            this.rdoC.Text = "C";
-            this.rdoC.UseVisualStyleBackColor = true;
+            this.txtAnsA.Location = new System.Drawing.Point(143, 101);
+            this.txtAnsA.Name = "txtAnsA";
+            this.txtAnsA.Size = new System.Drawing.Size(1237, 34);
+            this.txtAnsA.TabIndex = 3;
             // 
-            // btnSave
+            // txtQuest
             // 
-            this.btnSave.Location = new System.Drawing.Point(143, 267);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(112, 42);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.txtQuest.Location = new System.Drawing.Point(143, 59);
+            this.txtQuest.Name = "txtQuest";
+            this.txtQuest.Size = new System.Drawing.Size(1237, 34);
+            this.txtQuest.TabIndex = 2;
             // 
-            // btnDelete
+            // txtQuesId
             // 
-            this.btnDelete.Location = new System.Drawing.Point(297, 266);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(112, 42);
-            this.btnDelete.TabIndex = 10;
-            this.btnDelete.Text = "Delete";
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.txtQuesId.Enabled = false;
+            this.txtQuesId.Location = new System.Drawing.Point(143, 16);
+            this.txtQuesId.Name = "txtQuesId";
+            this.txtQuesId.Size = new System.Drawing.Size(295, 34);
+            this.txtQuesId.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(465, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(69, 27);
+            this.label7.TabIndex = 1;
+            this.label7.Text = "Subject:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(105, 188);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(26, 27);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "C:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(105, 146);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 27);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "B:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(105, 104);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(25, 27);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "A:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(51, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 27);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Question:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(93, 27);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "QuestionID:";
             // 
             // dgv
             // 
@@ -247,6 +251,26 @@
             this.dgv.RowTemplate.Height = 24;
             this.dgv.Size = new System.Drawing.Size(1392, 596);
             this.dgv.TabIndex = 1;
+            // 
+            // btnSubject
+            // 
+            this.btnSubject.Location = new System.Drawing.Point(511, 262);
+            this.btnSubject.Name = "btnSubject";
+            this.btnSubject.Size = new System.Drawing.Size(137, 41);
+            this.btnSubject.TabIndex = 11;
+            this.btnSubject.Text = "Subject";
+            this.btnSubject.UseVisualStyleBackColor = true;
+            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
+            // 
+            // btnGrade
+            // 
+            this.btnGrade.Location = new System.Drawing.Point(704, 263);
+            this.btnGrade.Name = "btnGrade";
+            this.btnGrade.Size = new System.Drawing.Size(156, 39);
+            this.btnGrade.TabIndex = 12;
+            this.btnGrade.Text = "Grade";
+            this.btnGrade.UseVisualStyleBackColor = true;
+            this.btnGrade.Click += new System.EventHandler(this.btnGrade_Click);
             // 
             // Form1
             // 
@@ -289,6 +313,8 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dgv;
+        private System.Windows.Forms.Button btnGrade;
+        private System.Windows.Forms.Button btnSubject;
     }
 }
 
