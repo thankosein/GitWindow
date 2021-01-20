@@ -1,4 +1,5 @@
 ﻿using MultipleChoiceQuestionGenerator.Data;
+using MultipleChoiceQuestionGenerator.Model;
 using MultipleChoiceQuestionGenerator.Service;
 using System;
 using System.Collections.Generic;
@@ -45,7 +46,7 @@ namespace MultipleChoiceQuestionGenerator.UI
         {
             lblMessage.Text = "";
             CreateGrid();
-            txtId.Text = GenericGradeService.GetGradeId();
+            txtId.Text = GetGradeId();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -56,16 +57,18 @@ namespace MultipleChoiceQuestionGenerator.UI
                 Name = txtName.Text
             };
 
-            GenericGradeService.AddGrade(grade);
-            GenericGradeService.ReadData(dgv);
-            txtId.Text = GenericGradeService.GetGradeId();
+            GradeServiceTwo.service.Add(grade);
+            ReadData(dgv);
+
+            txtId.Text = GetGradeId();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            GenericGradeService.DeleteGrade(id);
-            GenericGradeService.ReadData(dgv);
-            txtId.Text = GenericGradeService.GetGradeId();
+            Grade grade = GradeServiceTwo.service.GetById(id);
+            GradeServiceTwo.service.Delete(grade);
+            ReadData(dgv);
+            txtId.Text = GetGradeId();
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -74,6 +77,38 @@ namespace MultipleChoiceQuestionGenerator.UI
             if(dgv.Rows.Count >0)
             {
                 id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value);
+            }
+        }
+
+        private static string GetGradeId()
+        {
+            Grade grade = GradeServiceTwo.service.GetAll().LastOrDefault();
+            if (grade == null)
+            {
+                return "1";
+            }
+            else
+            {
+                return (grade.GradeId + 1).ToString();
+            }
+        }
+
+
+        private static void ReadData(DataGridView dgv)
+        {
+            List<Grade> _lst = GradeServiceTwo.service.GetAll().ToList();
+            if(_lst != null)
+            {
+                dgv.Rows.Clear();
+                foreach (var item in _lst)
+                {
+                    string[] row = new string[]
+                    {
+                    item.GradeId.ToString(),
+                    item.Name
+                    };
+                    dgv.Rows.Add(row);
+                }
             }
         }
     }

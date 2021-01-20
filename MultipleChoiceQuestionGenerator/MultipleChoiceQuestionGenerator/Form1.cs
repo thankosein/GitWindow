@@ -96,5 +96,11 @@ namespace MultipleChoiceQuestionGenerator
             frmGrade frm = new frmGrade();
             frm.ShowDialog();
         }
+
+        private void btnStudent_Click(object sender, EventArgs e)
+        {
+            frmStudent frm = new frmStudent();
+            frm.ShowDialog();
+        }
     }
 }

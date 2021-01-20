@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultipleChoiceQuestionGenerator.Data
+namespace MultipleChoiceQuestionGenerator.Model
 {
     public class Subject
     {
