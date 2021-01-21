@@ -3,6 +3,7 @@ using MultipleChoiceQuestionGenerator.Model;
 using MultipleChoiceQuestionGenerator.Service;
 using System;
 using System.Collections.Generic;
+using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,33 +12,56 @@ namespace MultipleChoiceQuestionGenerator.Data
 {
     public class GradeCrud : IGenericCrudByIntegerKey<Grade>
     {
-        List<Grade> _lst = GradeData.DataList;
 
         public void Add(Grade entity)
-        {
-            _lst.Add(entity);
+        {            
+            //InsertQuery
+            string sql = "INSERT INTO Grade (Name) Values ('"+ entity.Name + "');";
+            com.modSetData(sql);
         }
 
         public void Delete(Grade entity)
         {
-            _lst.Remove(entity);
+            string sql = "DELETE * FROM Grade WHERE GradeId=" + entity.GradeId;
+            com.modSetData(sql);
         }
 
         public void Edit(int id, Grade entity)
         {
-            Grade g = _lst.Where(x => x.GradeId == id).FirstOrDefault();
-            _lst.Remove(g);
-            _lst.Add(entity);
+            
+
+            string sql = "UPDATE Grade Set Name='" + entity.Name + "' WHRER GradeId=" + id;
+            com.modSetData(sql);
         }
 
         public IEnumerable<Grade> GetAll()
         {
-            return _lst.ToList();
+            List<Grade> lst = new List<Grade>();
+            string sql = "Select GradeId, Name From Grade";
+            OleDbDataReader rstauto = com.modGetDataReader(sql);
+            if (rstauto.HasRows)
+            {
+                rstauto.Read();
+                do
+                {
+                    Grade grade = new Grade 
+                    { 
+                        GradeId = Convert.ToInt32(rstauto[0]),
+                        Name = rstauto[1].ToString()
+                    };
+                    lst.Add(grade);
+                } while (rstauto.Read());
+                rstauto.Close();
+            }
+
+            return lst.ToList();
         }
 
         public Grade GetById(int id)
         {
-            return _lst.Where(x => x.GradeId == id).FirstOrDefault();
+            List<Grade> lstGrade = GetAll().ToList();
+            Grade grade = lstGrade.Where(x => x.GradeId == id).FirstOrDefault();
+            return grade;
         }
     }
 }

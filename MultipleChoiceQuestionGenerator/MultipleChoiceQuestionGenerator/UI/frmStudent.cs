@@ -15,6 +15,7 @@ namespace MultipleChoiceQuestionGenerator.UI
 {
     public partial class frmStudent : Form
     {
+        List<Grade> _lstGrade = new List<Grade>();
         public frmStudent()
         {
             InitializeComponent();
@@ -69,7 +70,12 @@ namespace MultipleChoiceQuestionGenerator.UI
         {
             lblMessage.Text = "";
             CreateGrid();
-            FillStateComboBox(cboGrade, GradeData.DataList);
+            var lstGrade = GradeServiceTwo.service.GetAll();
+            if(lstGrade != null)
+            {
+                _lstGrade = lstGrade.ToList();
+            }
+            FillStateComboBox(cboGrade, _lstGrade);
             txtId.Text = GetId();
         }
 
@@ -115,7 +121,7 @@ namespace MultipleChoiceQuestionGenerator.UI
                     item.StudentId.ToString(),
                     item.Name,
                     item.Result.ToString(),
-                    GradeData.DataList.Where(x=>x.GradeId == item.GradeId).FirstOrDefault().Name,
+					GradeServiceTwo.service.GetById(item.GradeId).Name,
                     };
                     dgv.Rows.Add(row);
                 }

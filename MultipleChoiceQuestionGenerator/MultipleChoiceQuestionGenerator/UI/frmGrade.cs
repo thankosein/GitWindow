@@ -47,6 +47,7 @@ namespace MultipleChoiceQuestionGenerator.UI
             lblMessage.Text = "";
             CreateGrid();
             txtId.Text = GetGradeId();
+            ReadData(dgv);
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -10,13 +10,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MultipleChoiceQuestionGenerator.Common;
 namespace MultipleChoiceQuestionGenerator
 {
     public partial class Form1 : Form
     {
         public Form1()
         {
+            com.MODopenDB();
             InitializeComponent();
             //CreateGrid();
         }
