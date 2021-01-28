@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnGrade = new System.Windows.Forms.Button();
-            this.btnSubject = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.rdoC = new System.Windows.Forms.RadioButton();
@@ -49,16 +47,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv = new System.Windows.Forms.DataGridView();
-            this.btnStudent = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnStudent);
-            this.groupBox1.Controls.Add(this.btnGrade);
-            this.groupBox1.Controls.Add(this.btnSubject);
             this.groupBox1.Controls.Add(this.btnDelete);
             this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.rdoC);
@@ -84,26 +78,6 @@
             this.groupBox1.Size = new System.Drawing.Size(1392, 320);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            // 
-            // btnGrade
-            // 
-            this.btnGrade.Location = new System.Drawing.Point(704, 263);
-            this.btnGrade.Name = "btnGrade";
-            this.btnGrade.Size = new System.Drawing.Size(156, 39);
-            this.btnGrade.TabIndex = 12;
-            this.btnGrade.Text = "Grade";
-            this.btnGrade.UseVisualStyleBackColor = true;
-            this.btnGrade.Click += new System.EventHandler(this.btnGrade_Click);
-            // 
-            // btnSubject
-            // 
-            this.btnSubject.Location = new System.Drawing.Point(511, 262);
-            this.btnSubject.Name = "btnSubject";
-            this.btnSubject.Size = new System.Drawing.Size(137, 41);
-            this.btnSubject.TabIndex = 11;
-            this.btnSubject.Text = "Subject";
-            this.btnSubject.UseVisualStyleBackColor = true;
-            this.btnSubject.Click += new System.EventHandler(this.btnSubject_Click);
             // 
             // btnDelete
             // 
@@ -160,10 +134,6 @@
             // 
             this.cboSubject.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboSubject.FormattingEnabled = true;
-            this.cboSubject.Items.AddRange(new object[] {
-            "Myanmar",
-            "English",
-            "General"});
             this.cboSubject.Location = new System.Drawing.Point(546, 16);
             this.cboSubject.Name = "cboSubject";
             this.cboSubject.Size = new System.Drawing.Size(295, 35);
@@ -274,16 +244,6 @@
             this.dgv.Size = new System.Drawing.Size(1392, 596);
             this.dgv.TabIndex = 1;
             // 
-            // btnStudent
-            // 
-            this.btnStudent.Location = new System.Drawing.Point(909, 263);
-            this.btnStudent.Name = "btnStudent";
-            this.btnStudent.Size = new System.Drawing.Size(137, 39);
-            this.btnStudent.TabIndex = 13;
-            this.btnStudent.Text = "Student";
-            this.btnStudent.UseVisualStyleBackColor = true;
-            this.btnStudent.Click += new System.EventHandler(this.btnStudent_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 27F);
@@ -325,9 +285,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridView dgv;
-        private System.Windows.Forms.Button btnGrade;
-        private System.Windows.Forms.Button btnSubject;
-        private System.Windows.Forms.Button btnStudent;
     }
 }
 

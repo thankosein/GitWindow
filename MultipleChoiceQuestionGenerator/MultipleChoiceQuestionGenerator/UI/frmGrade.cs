@@ -58,7 +58,7 @@ namespace MultipleChoiceQuestionGenerator.UI
                 Name = txtName.Text
             };
 
-            GradeServiceTwo.service.Add(grade);
+            GradeServiceTwo.validateService.Add(grade);
             ReadData(dgv);
 
             txtId.Text = GetGradeId();

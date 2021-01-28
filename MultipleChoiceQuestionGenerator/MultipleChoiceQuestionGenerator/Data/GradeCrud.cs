@@ -11,13 +11,12 @@ using System.Threading.Tasks;
 namespace MultipleChoiceQuestionGenerator.Data
 {
     public class GradeCrud : IGenericCrudByIntegerKey<Grade>
-    {
-
+    {        
         public void Add(Grade entity)
         {            
             //InsertQuery
-            string sql = "INSERT INTO Grade (Name) Values ('"+ entity.Name + "');";
-            com.modSetData(sql);
+            string sql = "INSERT INTO Grade (Name) VALUES ('"+ entity.Name + "');";
+            object c = com.modSetData(sql);
         }
 
         public void Delete(Grade entity)
@@ -28,8 +27,6 @@ namespace MultipleChoiceQuestionGenerator.Data
 
         public void Edit(int id, Grade entity)
         {
-            
-
             string sql = "UPDATE Grade Set Name='" + entity.Name + "' WHRER GradeId=" + id;
             com.modSetData(sql);
         }
@@ -63,5 +60,7 @@ namespace MultipleChoiceQuestionGenerator.Data
             Grade grade = lstGrade.Where(x => x.GradeId == id).FirstOrDefault();
             return grade;
         }
+
+        
     }
 }

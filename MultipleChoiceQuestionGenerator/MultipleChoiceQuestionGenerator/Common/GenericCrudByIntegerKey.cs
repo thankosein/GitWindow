@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MultipleChoiceQuestionGenerator.Common
 {
-    public class GenericCrudByIntegerKey<T> where T : new()
+    public class GenericCrudByIntegerKey<T> where T : class, new()
     {
         private IGenericCrudByIntegerKey<T> _crud;
         public GenericCrudByIntegerKey(IGenericCrudByIntegerKey<T> crud)
@@ -16,7 +16,9 @@ namespace MultipleChoiceQuestionGenerator.Common
 
         public void Add(T entity)
         {
+            BeforeAdd(entity);
             _crud.Add(entity);
+            AfterAdd(entity);
         }
 
         public void Edit(int id, T entity)
@@ -40,5 +42,17 @@ namespace MultipleChoiceQuestionGenerator.Common
         {
             return _crud.GetById(id);
         }
+
+        #region Validation
+        public virtual void BeforeAdd(T entity)
+        {
+
+        }
+
+        public virtual void AfterAdd(T entity)
+        {
+
+        }
+        #endregion
     }
 }

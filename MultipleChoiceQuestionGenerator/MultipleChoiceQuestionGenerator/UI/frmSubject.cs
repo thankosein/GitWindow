@@ -51,7 +51,8 @@ namespace MultipleChoiceQuestionGenerator.UI
         {
             lblMessage.Text = "";
             CreateGrid();
-            txtId.Text = GenericSubjectService.GetSubjectId();
+            SubjectService.ReadData(dgv);
+            txtId.Text = SubjectService.GetSubjectId();
         }
 
         private void btnSave_Click(object sender, EventArgs e)
@@ -63,16 +64,17 @@ namespace MultipleChoiceQuestionGenerator.UI
                 Remarks = txtRemark.Text
             };
 
-            GenericSubjectService.AddSubject(sub);
-            GenericSubjectService.ReadData(dgv);
-            txtId.Text = GenericSubjectService.GetSubjectId();
+            SubjectService.service.Add(sub);
+            SubjectService.ReadData(dgv);
+            txtId.Text = SubjectService.GetSubjectId();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            GenericSubjectService.DeleteSubject(id);
-            GenericSubjectService.ReadData(dgv);
-            txtId.Text = GenericSubjectService.GetSubjectId();
+            Subject subject = SubjectService.service.GetById(id);
+            SubjectService.service.Delete(subject);
+            SubjectService.ReadData(dgv);
+            txtId.Text = SubjectService.GetSubjectId();
         }
 
         private void dgv_CellClick(object sender, DataGridViewCellEventArgs e)

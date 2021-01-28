@@ -25,7 +25,7 @@ namespace MultipleChoiceQuestionGenerator.Service
         public static void ReadData(DataGridView dgv)
         {
             DataTable qutestDataTable = ToDataTable(lstQuestion);
-            dgv.DataSource = qutestDataTable;
+            //dgv.DataSource = qutestDataTable;
         }
 
         public static string GetQuestionId()

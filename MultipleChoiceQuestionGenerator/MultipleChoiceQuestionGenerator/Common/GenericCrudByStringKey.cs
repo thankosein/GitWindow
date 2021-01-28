@@ -40,5 +40,17 @@ namespace MultipleChoiceQuestionGenerator.Common
         {
             return _crud.GetById(id);
         }
+
+        #region Validation
+        public virtual void BeforeAdd(T entity)
+        {
+
+        }
+        
+        public virtual void AfterAdd(T entity)
+        {
+
+        }
+        #endregion
     }
 }

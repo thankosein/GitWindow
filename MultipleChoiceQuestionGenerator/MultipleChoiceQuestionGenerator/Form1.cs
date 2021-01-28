@@ -17,53 +17,60 @@ namespace MultipleChoiceQuestionGenerator
     {
         public Form1()
         {
-            com.MODopenDB();
+            
             InitializeComponent();
             //CreateGrid();
         }
 
-        private void CreateGrid()
-        {
-            DataGridViewCellStyle coloumHeader = new DataGridViewCellStyle();
-            coloumHeader.BackColor = Color.AliceBlue;
-            coloumHeader.Font = new Font("Pyidaungsu", 10.2F, System.Drawing.FontStyle.Bold);
-            dgv.ColumnHeadersDefaultCellStyle = coloumHeader;
-            dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgv.AllowUserToAddRows = false;
-            dgv.RowHeadersVisible = false;
-            dgv.ColumnCount = 7;
+        //private void CreateGrid()
+        //{
+        //    DataGridViewCellStyle coloumHeader = new DataGridViewCellStyle();
+        //    coloumHeader.BackColor = Color.AliceBlue;
+        //    coloumHeader.Font = new Font("Pyidaungsu", 10.2F, System.Drawing.FontStyle.Bold);
+        //    dgv.ColumnHeadersDefaultCellStyle = coloumHeader;
+        //    dgv.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+        //    dgv.AllowUserToAddRows = false;
+        //    dgv.RowHeadersVisible = false;
+        //    dgv.ColumnCount = 7;
 
-            dgv.Columns[0].HeaderText = "QuestId";
-            dgv.Columns[0].Visible = true;
-            dgv.Columns[0].Width = 65;
+        //    dgv.Columns[0].HeaderText = "QuestId";
+        //    dgv.Columns[0].Visible = true;
+        //    dgv.Columns[0].Width = 65;
 
-            dgv.Columns[1].HeaderText = "Subject";
-            dgv.Columns[1].Visible = true;
-            dgv.Columns[1].Width = 100;
+        //    dgv.Columns[1].HeaderText = "Subject";
+        //    dgv.Columns[1].Visible = true;
+        //    dgv.Columns[1].Width = 100;
 
-            dgv.Columns[2].HeaderText = "Ques";
-            dgv.Columns[2].Visible = true;
-            dgv.Columns[2].Width = 310;
+        //    dgv.Columns[2].HeaderText = "Ques";
+        //    dgv.Columns[2].Visible = true;
+        //    dgv.Columns[2].Width = 310;
 
-            dgv.Columns[3].HeaderText = "A";
-            dgv.Columns[3].Visible = true;
-            dgv.Columns[3].Width = 310;
+        //    dgv.Columns[3].HeaderText = "A";
+        //    dgv.Columns[3].Visible = true;
+        //    dgv.Columns[3].Width = 310;
 
-            dgv.Columns[4].HeaderText = "B";
-            dgv.Columns[4].Visible = true;
-            dgv.Columns[4].Width = 310;
+        //    dgv.Columns[4].HeaderText = "B";
+        //    dgv.Columns[4].Visible = true;
+        //    dgv.Columns[4].Width = 310;
 
-            dgv.Columns[5].HeaderText = "C";
-            dgv.Columns[5].Visible = true;
-            dgv.Columns[5].Width = 310;
+        //    dgv.Columns[5].HeaderText = "C";
+        //    dgv.Columns[5].Visible = true;
+        //    dgv.Columns[5].Width = 310;
 
-            dgv.Columns[6].HeaderText = "Answer";
-            dgv.Columns[6].Visible = true;
-            dgv.Columns[6].Width = 80;
-        }
+        //    dgv.Columns[6].HeaderText = "Answer";
+        //    dgv.Columns[6].Visible = true;
+        //    dgv.Columns[6].Width = 80;
+        //}
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            ////System Overflow Exception Test
+            //byte a = 100;
+            //byte b = 200;
+            //byte c = Convert.ToByte(a + b);
+
+            com.comboFill("SELECT Name From Subject;", cboSubject);
+
             QuestionService.ReadData(dgv);
             txtQuesId.Text = QuestionService.GetQuestionId();
         }
@@ -102,6 +109,12 @@ namespace MultipleChoiceQuestionGenerator
         {
             frmStudent frm = new frmStudent();
             frm.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmUser f = new frmUser();
+            f.ShowDialog();
         }
     }
 }
