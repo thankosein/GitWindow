@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MultipleChoiceQuestionGenerator.Data
+namespace MultipleChoiceQuestionGenerator.Model
 {
     public class Question
     {
@@ -13,7 +13,7 @@ namespace MultipleChoiceQuestionGenerator.Data
         public string AnswerA { get; set; }
         public string AnswerB { get; set; }
         public string AnswerC { get; set; }
-        public string CorrectAnswer { get; set; }
-        public string Subject { get; set; }
+        public char CorrectAnswer { get; set; }
+        public int SubjectId { get; set; }
     }
 }

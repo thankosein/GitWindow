@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace MultipleChoiceQuestionGenerator.Common
 {
-    static class com
+    static class Com
     {
         public static OleDbConnection conn;
         private const string DBNAME = "MultipleChoiceQuestionGenerator";
@@ -77,7 +77,7 @@ namespace MultipleChoiceQuestionGenerator.Common
         public static void autofill(string strSql, TextBox txt)
         {
             AutoCompleteStringCollection authors = new AutoCompleteStringCollection();
-            OleDbDataReader rstauto = com.modGetDataReader(strSql);
+            OleDbDataReader rstauto = Com.modGetDataReader(strSql);
             if (rstauto.HasRows)
             {
                 rstauto.Read();
@@ -95,13 +95,33 @@ namespace MultipleChoiceQuestionGenerator.Common
         public static void comboFill(string strSql, ComboBox cbo)
         {
             cbo.Items.Clear();
-            OleDbDataReader rstCombo = com.modGetDataReader(strSql);
+            OleDbDataReader rstCombo = Com.modGetDataReader(strSql);
             if (rstCombo.HasRows)
             {
                 while (rstCombo.Read())
                 {
                     cbo.Items.Add(rstCombo[0]);
                 }
+            }
+        }
+
+        public static void comboFillWithKey(string strSql, ComboBox cbo)
+        {
+            cbo.Items.Clear();
+            OleDbDataReader rstCombo = Com.modGetDataReader(strSql);
+            if (rstCombo.HasRows)
+            {
+                cbo.ValueMember = "Value";
+                cbo.DisplayMember = "Text";
+
+                while (rstCombo.Read())
+                {
+                    cbo.Items.Add(new { Text = rstCombo[1], Value = rstCombo[0] });
+                }
+
+                cbo.DataSource = cbo.Items;
+
+                cbo.SelectedIndex = 0;
             }
         }
     }

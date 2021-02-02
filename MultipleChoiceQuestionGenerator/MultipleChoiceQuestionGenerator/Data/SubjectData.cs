@@ -14,26 +14,26 @@ namespace MultipleChoiceQuestionGenerator.Data
         public void Add(Subject entity)
         {
             string insertQuery = "INSERT INTO Subject (Name, Remarks) VALUES ('" + entity.Name + "','" + entity.Remarks + "');";
-            com.modSetData(insertQuery);
+            Com.modSetData(insertQuery);
         }
 
         public void Delete(Subject entity)
         {
             string deleteQuery = "DELETE * FROM Subject WHERE SubjectID=" + entity.SubjectId;
-            com.modSetData(deleteQuery);
+            Com.modSetData(deleteQuery);
         }
 
         public void Edit(int id, Subject entity)
         {
             string updateQuery = "UPDATE [Subject] SET Name='" + entity.Name + "', Remarks='" + entity.Remarks + "' WHERE SubjectId=" + entity.SubjectId + ";";
-            com.modSetData(updateQuery);
+            Com.modSetData(updateQuery);
         }
 
         public IEnumerable<Subject> GetAll()
         {
             List<Subject> lstSubject = new List<Subject>();
             string selectQuery = "SELECT * FROM Subject;";
-            OleDbDataReader reader = com.modGetDataReader(selectQuery);
+            OleDbDataReader reader = Com.modGetDataReader(selectQuery);
             if (reader.HasRows)
             {
                 reader.Read();
@@ -53,7 +53,7 @@ namespace MultipleChoiceQuestionGenerator.Data
         public Subject GetById(int id)
         {
             string selectQuery = "SELECT * FROM Subject Where SubjectId="+id+";";
-            OleDbDataReader reader = com.modGetDataReader(selectQuery);
+            OleDbDataReader reader = Com.modGetDataReader(selectQuery);
             if (reader.HasRows)
             {
                 reader.Read();

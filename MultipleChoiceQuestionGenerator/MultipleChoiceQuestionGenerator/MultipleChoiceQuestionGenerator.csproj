@@ -46,12 +46,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\com.cs" />
+    <Compile Include="Common\Com.cs" />
     <Compile Include="Common\GenericCrudByIntegerKey.cs" />
     <Compile Include="Common\GenericCrudByStringKey.cs" />
     <Compile Include="Common\IGenericCrud.cs" />
     <Compile Include="Common\IGenericCrudByStringKey.cs" />
     <Compile Include="Common\IGenericCrudByIntegerKey.cs" />
+    <Compile Include="Data\QuestionData.cs" />
     <Compile Include="Data\StudentCrud.cs" />
     <Compile Include="Data\StudentData.cs" />
     <Compile Include="Data\SubjectData.cs" />

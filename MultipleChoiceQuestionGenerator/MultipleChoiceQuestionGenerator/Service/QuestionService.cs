@@ -1,4 +1,6 @@
-﻿using MultipleChoiceQuestionGenerator.Data;
+﻿using MultipleChoiceQuestionGenerator.Common;
+using MultipleChoiceQuestionGenerator.Data;
+using MultipleChoiceQuestionGenerator.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,59 +14,50 @@ namespace MultipleChoiceQuestionGenerator.Service
 {
     public static class QuestionService
     {
-        public static List<Question> lstQuestion = new List<Question>();
-        
+        public static GenericCrudByIntegerKey<Question> service;
+        public static GenericCrudByIntegerKey<Subject> SubjectService;
 
-        public static string AddQuesiton(Question quest)
+
+        static QuestionService()
         {
-            lstQuestion.Add(quest);
-
-            return "Add successfully";
+            service = new GenericCrudByIntegerKey<Question>(new QuestionData());
+            SubjectService = new GenericCrudByIntegerKey<Subject>(new SubjectData());
         }
 
-        public static void ReadData(DataGridView dgv)
+        public static void ReadDataGrid(DataGridView dgv)
         {
-            DataTable qutestDataTable = ToDataTable(lstQuestion);
-            //dgv.DataSource = qutestDataTable;
+            dgv.Rows.Clear();
+            List<Subject> lstSubject = SubjectService.GetAll().ToList();
+            List<Question> lstQuestion = service.GetAll().ToList();
+            foreach (var item in lstQuestion)
+            {
+                string[] row = new string[]
+                {
+                    item.QuestId.ToString(),
+                    lstSubject.Where(x=>x.SubjectId.Equals(item.SubjectId)).FirstOrDefault().Name,
+                    item.Quest,
+                    item.AnswerA,
+                    item.AnswerB,
+                    item.AnswerC,
+                    item.CorrectAnswer.ToString(),
+                    
+                };
+                dgv.Rows.Add(row);
+            }
         }
 
-        public static string GetQuestionId()
+        public static string GenerateId()
         {
-            Question ques = lstQuestion.LastOrDefault();
-            if(ques == null)
+            List<Question> lstQuestion = service.GetAll().ToList();
+            Question quest = lstQuestion.LastOrDefault();
+            if (quest == null)
             {
                 return "1";
             }
             else
             {
-                return (ques.QuestId + 1).ToString();
+                return (quest.QuestId + 1).ToString();
             }
-        }
-
-        public static DataTable ToDataTable<T>(this IList<T> data)
-        {
-            PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(typeof(T));
-            DataTable table = new DataTable();
-            foreach (PropertyDescriptor prop in properties)
-            {
-                var name = prop.Name;
-                var dataType = Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType;
-
-                table.Columns.Add(prop.Name, Nullable.GetUnderlyingType(prop.PropertyType) ?? prop.PropertyType);
-            }
-                
-            foreach (T item in data)
-            {
-                DataRow row = table.NewRow();
-                foreach (PropertyDescriptor prop in properties)
-                {
-                    row[prop.Name] = prop.GetValue(item) ?? DBNull.Value;                    
-                }
-
-                table.Rows.Add(row);
-
-            }
-            return table;
         }
     }
 }

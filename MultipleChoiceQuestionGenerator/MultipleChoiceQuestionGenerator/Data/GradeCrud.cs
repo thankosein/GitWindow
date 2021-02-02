@@ -16,26 +16,26 @@ namespace MultipleChoiceQuestionGenerator.Data
         {            
             //InsertQuery
             string sql = "INSERT INTO Grade (Name) VALUES ('"+ entity.Name + "');";
-            object c = com.modSetData(sql);
+            object c = Com.modSetData(sql);
         }
 
         public void Delete(Grade entity)
         {
             string sql = "DELETE * FROM Grade WHERE GradeId=" + entity.GradeId;
-            com.modSetData(sql);
+            Com.modSetData(sql);
         }
 
         public void Edit(int id, Grade entity)
         {
             string sql = "UPDATE Grade Set Name='" + entity.Name + "' WHRER GradeId=" + id;
-            com.modSetData(sql);
+            Com.modSetData(sql);
         }
 
         public IEnumerable<Grade> GetAll()
         {
             List<Grade> lst = new List<Grade>();
             string sql = "Select GradeId, Name From Grade";
-            OleDbDataReader rstauto = com.modGetDataReader(sql);
+            OleDbDataReader rstauto = Com.modGetDataReader(sql);
             if (rstauto.HasRows)
             {
                 rstauto.Read();

@@ -41,7 +41,7 @@ namespace MultipleChoiceQuestionGenerator
 
         private void frmHome_Load(object sender, EventArgs e)
         {
-            com.MODopenDB();
+            Com.MODopenDB();
         }
     }
 }
