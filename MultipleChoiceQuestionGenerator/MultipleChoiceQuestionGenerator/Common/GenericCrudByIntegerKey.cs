@@ -23,9 +23,9 @@ namespace MultipleChoiceQuestionGenerator.Common
 
         public void Edit(int id, T entity)
         {
-            T getEntity = _crud.GetById(id);
-            _crud.Delete(getEntity);
-            _crud.Add(entity);
+            BeforeEdit(entity);
+            _crud.Edit(id, entity);
+            AfterEdit(entity);
         }
 
         public void Delete(T entity)
@@ -50,6 +50,16 @@ namespace MultipleChoiceQuestionGenerator.Common
         }
 
         public virtual void AfterAdd(T entity)
+        {
+
+        }
+
+        public virtual void BeforeEdit(T entity)
+        {
+
+        }
+
+        public virtual void AfterEdit(T entity)
         {
 
         }

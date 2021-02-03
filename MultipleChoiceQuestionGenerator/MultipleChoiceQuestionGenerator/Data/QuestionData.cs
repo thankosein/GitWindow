@@ -25,7 +25,7 @@ namespace MultipleChoiceQuestionGenerator.Data
 
         public void Edit(int id, Question entity)
         {
-            string editQuery = "UPDATE [Question] SET(Quest='" + entity.Quest + "', AnswerA='" + entity.AnswerA + "',AnswerB='" + entity.AnswerB + "',AnswerC='" + entity.AnswerC + "',CorrectAnswer='" + entity.CorrectAnswer + "',SubjectId=" + entity.SubjectId + ") WHERE QuestId=" + id + ";";
+            string editQuery = "UPDATE [Question] SET Quest='" + entity.Quest + "', AnswerA='" + entity.AnswerA + "',AnswerB='" + entity.AnswerB + "',AnswerC='" + entity.AnswerC + "',CorrectAnswer='" + entity.CorrectAnswer + "',SubjectId=" + entity.SubjectId + " WHERE QuestId=" + id + ";";
             Com.modSetData(editQuery);
         }
 

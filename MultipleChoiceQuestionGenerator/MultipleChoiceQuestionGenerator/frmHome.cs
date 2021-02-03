@@ -1,4 +1,6 @@
 ﻿using MultipleChoiceQuestionGenerator.Common;
+using MultipleChoiceQuestionGenerator.Model;
+using MultipleChoiceQuestionGenerator.Service;
 using MultipleChoiceQuestionGenerator.UI;
 using System;
 using System.Collections.Generic;
@@ -18,8 +20,9 @@ namespace MultipleChoiceQuestionGenerator
         {
             InitializeComponent();
         }
-
         
+        int quesConfigCount = 2;
+        int getTheLastQuestionId = 0;
         private void aToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSubject frm = new frmSubject();
@@ -43,5 +46,65 @@ namespace MultipleChoiceQuestionGenerator
         {
             Com.MODopenDB();
         }
+
+        Question entity = new Question();
+        List<int> generatedQuestId = new List<int>();
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            generatedQuestId.Clear();
+            getTheLastQuestionId = Convert.ToInt32(QuestionService.GenerateId());
+            GenerateQuestion();
+        }
+
+        private void GenerateQuestion()
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < getTheLastQuestionId; i++)
+            {
+                int randomQuestId = rnd.Next(1, getTheLastQuestionId - 1);
+
+                bool tfHas = generatedQuestId.Contains(randomQuestId);
+                if (tfHas)
+                {
+                    i--;
+                }
+                else
+                {
+                    entity = QuestionService.service.GetById(randomQuestId);
+
+                    if (entity.QuestId > 0)
+                    {
+                        generatedQuestId.Add(randomQuestId);
+
+                        txtQuest.Text = entity.Quest;
+                        txtAnsA.Text = entity.AnswerA;
+                        txtAnsB.Text = entity.AnswerB;
+                        txtAnsC.Text = entity.AnswerC;
+                        break;
+                    }
+                }
+            }
+        }
+
+        private void btnAnsA_Click(object sender, EventArgs e)
+        {            
+            Button btn = (Button)sender;
+            if (entity.CorrectAnswer.Equals(Convert.ToChar(btn.Text)))
+            {
+                MessageBox.Show("Correct");
+            }            
+            else
+            {
+                MessageBox.Show("Not Correct");
+            }
+            if(quesConfigCount > generatedQuestId.Count())
+            {
+                GenerateQuestion();
+            }
+            else
+            {
+                MessageBox.Show("End");
+            }
+        } 
     }
 }
